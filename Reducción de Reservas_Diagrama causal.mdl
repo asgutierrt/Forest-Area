@@ -1,0 +1,182 @@
+{UTF-8}
+Agricultura  = A FUNCTION OF( )
+	~	
+	~		|
+
+Bosque protegido  = A FUNCTION OF( Compactación y erosion de tierras,Deforestación,\
+		Incendios Forestales)
+	~	
+	~		|
+
+Calidad del Habitat  = A FUNCTION OF( Bosque protegido,Compactación y erosion de tierras\
+		,Contaminación Hídrica,Emisión de gases de efecto invernadero)
+	~	
+	~		|
+
+Compactación y erosion de tierras  = A FUNCTION OF( Calidad del Habitat,Ganadería Extensiva\
+		)
+	~	
+	~		|
+
+Contaminación Hídrica  = A FUNCTION OF( Ganadería Extensiva,Mineria Ilegal)
+	~	
+	~		|
+
+Cultivo de coca  = A FUNCTION OF( )
+	~	
+	~		|
+
+Deforestación  = A FUNCTION OF( Agricultura,Cultivo de coca,Ganadería Extensiva,Mineria Ilegal\
+		,Personal en áreas protegidas)
+	~	
+	~		|
+
+Emisión de gases de efecto invernadero  = A FUNCTION OF( Ganadería Extensiva)
+	~	
+	~		|
+
+Incendios Forestales  = A FUNCTION OF( )
+	~	
+	~		|
+
+Especies endemicas  = A FUNCTION OF( Calidad del Habitat)
+	~	
+	~		|
+
+Personal en áreas protegidas  = A FUNCTION OF( Financiación de las Reservas Naturales\
+		)
+	~	
+	~		|
+
+Ganadería Extensiva  = A FUNCTION OF( Compactación y erosion de tierras)
+	~	
+	~		|
+
+Utilidades del Turismo  = A FUNCTION OF( )
+	~	
+	~		|
+
+Esfuerzo del Gobierno  = A FUNCTION OF( )
+	~	
+	~		|
+
+Financiación de las Reservas Naturales  = A FUNCTION OF( Esfuerzo del Gobierno,Utilidades del Turismo\
+		)
+	~	
+	~		|
+
+Mineria Ilegal  = A FUNCTION OF( )
+	~	
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 100
+	~	Month
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	Month
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP
+	~	Month [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	Month [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|96,96,90,0
+10,1,Bosque protegido,604,368,50,28,8,131,0,0,0,0,0,0,0,0,0,0,0,0
+10,2,Compactación y erosion de tierras,537,224,51,27,8,131,0,0,0,0,0,0,0,0,0,0,0,0
+10,3,Calidad del Habitat,718,193,37,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,5,Especies endemicas,768,89,34,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,6,Contaminación Hídrica,473,38,48,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,7,Emisión de gases de efecto invernadero,475,106,62,31,8,131,0,0,0,0,0,0,0,0,0,0,0,0
+10,8,Mineria Ilegal,174,184,39,27,8,131,0,0,0,0,0,0,0,0,0,0,0,0
+10,9,Ganadería Extensiva,328,243,33,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,10,Incendios Forestales,661,484,33,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,11,Utilidades del Turismo,460,633,44,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,12,Financiación de las Reservas Naturales,312,598,62,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,14,Personal en áreas protegidas,228,508,56,19,8,131,0,0,0,0,0,0,0,0,0,0,0,0
+10,15,Deforestación,293,421,44,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,16,Cultivo de coca,97,424,45,30,8,131,0,0,0,0,0,0,0,0,0,0,0,0
+1,18,11,12,1,0,43,0,2,64,0,-1--1--1,|12||0-0-0,1|(375,656)|
+1,22,16,15,1,0,43,0,2,64,0,-1--1--1,|12||0-0-0,1|(194,436)|
+1,24,10,1,1,0,45,0,2,64,0,-1--1--1,|12||0-0-0,1|(643,411)|
+1,25,14,15,1,0,45,0,2,64,0,-1--1--1,|12||0-0-0,1|(253,452)|
+1,27,2,1,1,0,45,0,2,64,0,-1--1--1,|12||0-0-0,1|(517,289)|
+1,36,8,6,1,0,43,0,2,64,0,-1--1--1,|12||0-0-0,1|(274,44)|
+1,37,3,2,1,0,45,0,2,64,0,-1--1--1,|12||0-0-0,1|(607,155)|
+1,38,3,5,1,0,43,0,2,64,0,-1--1--1,|12||0-0-0,1|(781,147)|
+1,39,9,15,1,0,43,0,2,64,0,-1--1--1,|12||0-0-0,1|(274,307)|
+1,40,8,15,1,0,43,0,2,64,0,-1--1--1,|12||0-0-0,1|(186,304)|
+10,42,Esfuerzo del Gobierno,441,542,40,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,43,42,12,1,0,43,0,2,64,0,-1--1--1,|12||0-0-0,1|(339,547)|
+1,54,12,14,1,0,43,0,2,64,0,-1--1--1,|0||-1--1--1,1|(234,561)|
+1,55,2,3,1,0,45,0,2,64,0,-1--1--1,|0||-1--1--1,1|(634,233)|
+1,56,9,2,1,0,43,0,2,64,0,-1--1--1,|0||-1--1--1,1|(496,265)|
+1,57,9,7,1,0,43,0,2,64,0,-1--1--1,|0||-1--1--1,1|(372,149)|
+1,58,7,3,1,0,45,0,2,192,0,-1--1--1,|0||-1--1--1,1|(592,102)|
+1,59,1,3,1,0,43,0,2,64,0,-1--1--1,|0||-1--1--1,1|(709,342)|
+1,62,9,6,1,0,43,0,2,64,0,-1--1--1,|0||-1--1--1,1|(317,137)|
+1,63,6,3,1,0,45,0,2,192,0,-1--1--1,|0||-1--1--1,1|(655,63)|
+12,64,0,621,201,20,20,5,7,0,0,-1,0,0,0,0,0,0,0,0,0
+R4
+12,65,0,632,295,20,20,5,7,0,0,-1,0,0,0,0,0,0,0,0,0
+R2
+1,66,15,1,1,0,45,0,2,192,0,-1--1--1,|0||-1--1--1,1|(532,478)|
+1,68,2,9,1,0,43,0,2,64,0,-1--1--1,|0||-1--1--1,1|(415,193)|
+12,69,0,435,343,20,20,5,7,0,0,-1,0,0,0,0,0,0,0,0,0
+R1
+12,70,0,432,239,20,20,5,7,0,0,-1,0,0,0,0,0,0,0,0,0
+R3
+12,72,0,501,160,20,20,4,7,0,0,-1,0,0,0,0,0,0,0,0,0
+R5
+12,74,0,540,58,20,20,4,7,0,0,-1,0,0,0,0,0,0,0,0,0
+R6
+10,75,Agricultura,109,345,35,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,76,75,15,1,0,43,0,2,64,0,-1--1--1,|0||-1--1--1,1|(175,385)|
+///---\\\
+:L<%^E!@
+9:Current
+23:0
+15:0,0,0,0,0,0
+19:90,0
+27:0,
+34:0,
+42:1
+72:0
+73:0
+5:Personal en áreas protegidas
+35:Date
+36:YYYY-MM-DD
+37:2000
+38:1
+39:1
+40:2
+41:0
+76:0
+77:0
+78:0
+79:0
+80:0
+81:0
+24:0
+25:0
+26:0
+75:
+43:

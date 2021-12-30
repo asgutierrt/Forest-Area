@@ -1,0 +1,371 @@
+{UTF-8}
+Deforestación=
+	MIN( tasa debida a ganaderia+tasa debida a mineria+tasa debida al cultivo de coca, Bosque protegido\
+		)
+	~	Ha/year
+	~		|
+
+Inventario de ganado= INTEG (
+	natalidad-consumo,
+		2e+07)
+	~	cabeza
+	~		|
+
+"% de recuperación"=
+	0.8
+	~	1/year
+	~		|
+
+tasa de emision por incendio=
+	90
+	~	ton/Ha
+	~		|
+
+Area total=
+	1.2e+08
+	~	Ha
+	~		|
+
+tasa de natalidad=
+	0.4
+	~	1/year
+	~		|
+
+Bosque protegido= INTEG (
+	proteccion real de nuevas areas+Recuperación-Deforestación,
+		1.2e+08)
+	~	Ha
+	~		|
+
+Calidad del habitat=
+	1-((compactación de tierras+conectividad+emision de gases)/3)
+	~	
+	~		|
+
+compactación de tierras=
+	1-(Valor referencia en compactación/tasa debida a ganaderia)
+	~	1
+	~		|
+
+conectividad=
+	(Bosque protegido/Area total)
+	~	1
+	~		|
+
+Constante de incendios=
+	0.02
+	~	1
+	~		|
+
+consumo=
+	tasa de consumo*Inventario de ganado
+	~	cabeza/year
+	~		|
+
+natalidad=
+	Inventario de ganado*tasa de natalidad
+	~	cabeza/year
+	~		|
+
+Incendios=
+	Bosque protegido*Constante de incendios
+	~	Ha
+	~		|
+
+emision de gases=
+	1-((1/((Inventario de ganado*tasa de emision por cabeza de ganado)+(Incendios*tasa de emision por incendio\
+		)))*Valor de referencia)
+	~	1
+	~		|
+
+Recuperación=
+	Ha para actividades productivas*"% de recuperación"
+	~	Ha/year
+	~		|
+
+Ha para actividades productivas= INTEG (
+	Deforestación-Recuperación,
+		0)
+	~	Ha
+	~		|
+
+Valor referencia en compactación=
+	600000
+	~	Ha/year
+	~		|
+
+Valor de referencia=
+	3e+10
+	~	ton
+	~		|
+
+tasa de consumo=
+	0.39
+	~	1/year
+	~		|
+
+tasa de emision por cabeza de ganado=
+	1500
+	~	ton/cabeza
+	~		|
+
+tasa debida a ganaderia=
+	área total ganaderia extensiva*"% de ganaderia en bosques"
+	~	Ha/year
+	~		|
+
+"% de ganaderia en bosques"=
+	0.9
+	~	1/year
+	~		|
+
+Seguridad ideal=
+	3000
+	~	persona/year
+	~		|
+
+proteccion real de nuevas areas=
+	tasa de declaración de reservas*porcentaje de reservas protegidas
+	~	Ha/year
+	~		|
+
+densidad de ganado=
+	1.6
+	~	Ha/cabeza
+	~		|
+
+tasa debida al cultivo de coca=
+	3615
+	~	Ha/year
+	~		|
+
+área total ganaderia extensiva=
+	(Inventario de ganado*densidad de ganado)-3e+07
+	~	Ha
+	~		|
+
+tasa de declaración de reservas=
+	417000
+	~	Ha/year
+	~		|
+
+porcentaje de reservas protegidas=
+	Seguridad en reservas/Seguridad ideal
+	~	1
+	~		|
+
+tasa debida a mineria=
+	1400
+	~	Ha/year
+	~		|
+
+"% invertido en personal"=
+	0.26
+	~	1/year
+	~		|
+
+Costo por persona=
+	1.4e+06
+	~	$/persona
+	~		|
+
+Gastos en personal=
+	Presupuesto de las áreas protegidas*"% invertido en personal"
+	~	$/year
+	~		|
+
+Ingresos=
+	tasa utilidades del turismo+tasa de presupuesto invertido del gobierno
+	~	$/year
+	~		|
+
+Presupuesto de las áreas protegidas= INTEG (
+	Ingresos-Gastos en personal,
+		6.6835e+07)
+	~	$
+	~		|
+
+Seguridad en reservas=
+	Gastos en personal/Costo por persona
+	~	persona/year
+	~		|
+
+tasa de presupuesto invertido del gobierno=
+	1e+07
+	~	$/year
+	~		|
+
+tasa utilidades del turismo=
+	4e+09
+	~	$/year
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL TIME  = 30
+	~	year
+	~	The final time for the simulation.
+	|
+
+INITIAL TIME  = 0
+	~	year
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME STEP
+	~	year [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME STEP  = 1
+	~	year [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|96,96,80,0
+10,1,Bosque protegido,677,438,40,20,3,3,0,0,0,0,0,0,0,0,0,0,0,0
+12,2,48,431,438,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,3,5,1,4,0,0,22,0,0,0,-1--1--1,,1|(571,439)|
+1,4,5,2,100,0,0,22,0,0,0,-1--1--1,,1|(467,439)|
+11,5,48,500,439,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,6,proteccion real de nuevas areas,500,466,58,19,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,7,Ha para actividades productivas,999,431,43,26,3,131,0,0,0,0,0,0,0,0,0,0,0,0
+1,8,10,7,4,0,0,22,0,0,0,-1--1--1,,1|(886,438)|
+1,9,10,1,100,0,0,22,0,0,0,-1--1--1,,1|(761,438)|
+11,10,860,811,438,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,11,Deforestación,811,457,44,11,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,12,área total ganaderia extensiva,776,294,62,19,8,131,0,0,0,0,0,0,0,0,0,0,0,0
+10,13,tasa debida al cultivo de coca,1046,353,43,38,8,131,0,0,0,0,0,0,0,0,0,0,0,0
+10,14,tasa debida a mineria,956,350,35,34,8,131,0,0,0,0,0,0,0,0,0,0,0,0
+10,15,tasa de declaración de reservas,361,374,61,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,16,15,6,1,0,0,0,0,64,0,-1--1--1,,1|(418,445)|
+10,17,Inventario de ganado,773,187,40,20,3,3,0,0,0,0,0,0,0,0,0,0,0,0
+12,18,48,632,188,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,19,21,17,4,0,0,22,0,0,0,-1--1--1,,1|(711,188)|
+1,20,21,18,100,0,0,22,0,0,0,-1--1--1,,1|(660,188)|
+11,21,48,684,188,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,22,natalidad,684,207,29,11,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,23,17,12,1,0,0,0,0,64,0,-1--1--1,,1|(781,229)|
+10,24,densidad de ganado,672,278,30,22,8,131,0,0,0,0,0,0,0,0,0,0,0,0
+1,25,24,12,1,0,0,0,0,64,0,-1--1--1,,1|(715,325)|
+10,26,Presupuesto de las áreas protegidas,509,628,39,30,3,131,0,0,0,0,0,0,0,0,0,0,0,0
+12,27,48,679,620,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,28,30,27,4,0,0,22,0,0,0,-1--1--1,,1|(642,619)|
+1,29,30,26,100,0,0,22,0,0,0,-1--1--1,,1|(575,619)|
+11,30,48,609,619,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,31,Gastos en personal,609,650,44,23,40,131,0,0,-1,0,0,0,0,0,0,0,0,0
+12,32,48,286,621,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,33,35,26,4,0,0,22,0,0,0,-1--1--1,,1|(429,621)|
+1,34,35,32,100,0,0,22,0,0,0,-1--1--1,,1|(336,621)|
+11,35,48,383,621,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,36,Ingresos,383,640,28,11,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,37,tasa de presupuesto invertido del gobierno,332,715,54,34,8,131,0,0,0,0,0,0,0,0,0,0,0,0
+10,38,tasa utilidades del turismo,445,701,45,33,8,131,0,0,0,0,0,0,0,0,0,0,0,0
+1,39,37,36,1,0,0,0,0,64,0,-1--1--1,,1|(329,666)|
+1,40,38,36,1,0,0,0,0,64,0,-1--1--1,,1|(378,676)|
+10,41,"% invertido en personal",561,718,46,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,42,41,31,1,0,0,0,0,64,0,-1--1--1,,1|(622,695)|
+1,43,26,31,1,0,0,0,0,64,0,-1--1--1,,1|(543,668)|
+10,44,Seguridad en reservas,458,540,42,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,45,31,44,1,0,0,0,0,64,0,-1--1--1,,1|(566,581)|
+10,46,Costo por persona,603,512,35,19,8,131,0,0,0,0,0,0,0,0,0,0,0,0
+1,47,46,44,1,0,0,0,0,64,0,-1--1--1,,1|(534,540)|
+10,48,"% de ganaderia en bosques",884,302,39,29,8,131,0,0,0,0,0,0,0,0,0,0,0,0
+10,49,Seguridad ideal,401,589,49,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,50,porcentaje de reservas protegidas,286,488,62,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,51,44,50,1,0,0,0,0,64,0,-1--1--1,,1|(376,545)|
+1,52,49,50,1,0,0,0,0,64,0,-1--1--1,,1|(319,560)|
+1,53,50,6,1,0,0,0,0,64,0,-1--1--1,,1|(373,465)|
+12,54,48,984,187,10,8,0,3,0,0,-1,0,0,0,0,0,0,0,0,0
+1,55,57,54,4,0,0,22,0,0,0,-1--1--1,,1|(935,187)|
+1,56,57,17,100,0,0,22,0,0,0,-1--1--1,,1|(849,187)|
+11,57,48,891,187,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,58,consumo,891,206,29,11,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,59,tasa de consumo,989,203,53,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,60,tasa de natalidad,602,161,53,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,61,17,22,1,0,0,0,0,64,0,-1--1--1,,1|(729,233)|
+1,62,60,22,1,0,0,0,0,64,0,-1--1--1,,1|(621,212)|
+1,63,59,58,1,0,0,0,0,64,0,-1--1--1,,1|(948,231)|
+1,64,17,58,1,0,0,0,0,64,0,-1--1--1,,1|(825,218)|
+1,65,67,1,4,0,0,22,0,0,0,-1--1--1,,1|(677,532)|
+1,66,67,7,100,0,0,22,0,0,0,-1--1--1,,1|(999,532)|
+11,67,574,824,532,6,8,34,3,0,0,1,0,0,0,0,0,0,0,0,0
+10,68,Recuperación,824,551,44,11,40,3,0,0,-1,0,0,0,0,0,0,0,0,0
+10,69,"% de recuperación",832,642,59,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,70,69,68,1,0,0,0,0,64,0,-1--1--1,,1|(868,571)|
+1,71,7,68,1,0,0,0,0,64,0,-1--1--1,,1|(959,523)|
+1,72,14,11,0,0,0,0,0,64,0,-1--1--1,,1|(878,406)|
+1,73,13,11,0,0,0,0,0,64,0,-1--1--1,,1|(925,406)|
+10,74,compactación de tierras,690,68,45,25,8,131,0,0,0,0,0,0,0,0,0,0,0,0
+10,75,conectividad,482,57,40,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+10,76,Calidad del habitat,678,-14,59,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,77,75,76,1,0,0,0,0,64,0,-1--1--1,,1|(574,16)|
+1,78,74,76,1,0,0,0,0,64,0,-1--1--1,,1|(694,27)|
+1,79,1,75,1,0,0,0,0,64,0,-1--1--1,,1|(475,268)|
+10,80,Area total,406,141,32,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,81,80,75,1,0,0,0,0,64,0,-1--1--1,,1|(424,101)|
+10,82,tasa debida a ganaderia,800,392,43,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,83,82,11,0,0,0,0,0,64,0,-1--1--1,,1|(804,421)|
+1,84,48,82,1,0,0,0,0,64,0,-1--1--1,,1|(861,348)|
+1,85,12,82,1,0,0,0,0,64,0,-1--1--1,,1|(785,369)|
+10,86,tasa debida a ganaderia,708,137,47,19,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|12||128-128-128,0,0,0,0,0,0
+1,87,86,74,1,0,0,0,0,64,0,-1--1--1,,1|(749,107)|
+10,88,Bosque protegido,1172,145,36,19,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|12||128-128-128,0,0,0,0,0,0
+10,89,Incendios,1056,124,31,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,90,88,89,1,0,0,0,0,64,0,-1--1--1,,1|(1106,153)|
+10,91,Constante de incendios,1174,93,43,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,92,91,89,1,0,0,0,0,64,0,-1--1--1,,1|(1120,120)|
+10,93,emision de gases,854,55,53,11,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,94,93,76,0,0,0,0,0,64,0,-1--1--1,,1|(772,23)|
+1,95,89,93,1,0,0,0,0,64,0,-1--1--1,,1|(980,78)|
+1,96,17,93,1,0,0,0,0,64,0,-1--1--1,,1|(778,115)|
+10,97,tasa de emision por incendio,1051,51,50,23,8,131,0,0,0,0,0,0,0,0,0,0,0,0
+10,98,tasa de emision por cabeza de ganado,860,130,62,19,8,131,0,0,0,0,0,0,0,0,0,0,0,0
+1,99,98,93,1,0,0,0,0,64,0,-1--1--1,,1|(885,91)|
+1,100,97,93,1,0,0,0,0,64,0,-1--1--1,,1|(955,40)|
+10,101,Valor referencia en compactación,561,104,45,37,8,131,0,0,0,0,0,0,0,0,0,0,0,0
+1,102,101,74,1,0,0,0,0,64,0,-1--1--1,,1|(625,112)|
+10,103,Valor de referencia,851,7,32,19,8,3,0,0,0,0,0,0,0,0,0,0,0,0
+1,104,103,93,1,0,0,0,0,64,0,-1--1--1,,1|(895,10)|
+1,105,1,11,1,0,0,0,0,64,0,-1--1--1,,1|(695,453)|
+///---\\\
+:L<%^E!@
+1:Prueba de condiciones extremas.vdfx
+1:Base.vdfx
+9:Prueba de condiciones extremas
+23:0
+15:0,0,0,0,0,0
+19:80,0
+27:0,
+34:0,
+42:1
+72:0
+73:0
+4:Time
+5:tasa debida al cultivo de coca
+35:Date
+36:YYYY-MM-DD
+37:2000
+38:1
+39:1
+40:2
+41:0
+76:0
+77:0
+78:0
+79:0
+80:0
+81:0
+24:0
+25:30
+26:30
+75:
+43:
